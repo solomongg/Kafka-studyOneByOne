@@ -106,6 +106,6 @@ Exception: Replication factor: 3 larger than available brokers: 1.
 * 选主
  ![avatar](20201110161429.png)
 
-* 测试
+* 测试集群高可用
   ![avatar](20201110161914.png)
   ![avatar](20201110161924.png)
