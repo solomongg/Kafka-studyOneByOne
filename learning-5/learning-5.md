@@ -8,7 +8,7 @@
   
 - 测试用例
   
-- 测试结果
+- 测试结果对比
   
 #### 测试环境
 
@@ -34,7 +34,7 @@
   
 |测试场景|MQ消息数|每秒写入消息数|记录大小(单位:字节|
 |----|----|----|----|
-|主机130|100W|5000|1000|
+|主机130|10W|2000|1000|
 
 ```shell
 ./kafka-producer-perf-test.sh --topic myTopic --num-records 100000 --record-size 1000  --throughput 2000 --producer-props bootstrap.servers=192.168.159.130:9092
@@ -43,7 +43,45 @@
 ![avatar](20201130090159.png)
 
 ```shell
-./kafka-consumer-perf-test.sh --broker-list lo192.168.159.130:9092 --topic myTopic --fetch-size 1048576 --messages 100000 --threads 1
+./kafka-consumer-perf-test.sh --broker-list 192.168.159.130:9092 --topic myTopic --fetch-size 1048576 --messages 100000 --threads 1
+```
+
+![avatar](20201130090159.png) 
+
+|测试场景|MQ消息数|每秒写入消息数|记录大小(单位:字节|
+|----|----|----|----|
+|主机130|10W|2000|1000|
+
+```shell
+./kafka-producer-perf-test.sh --topic myTopic --num-records 100000 --record-size 1000  --throughput 2000 --producer-props bootstrap.servers=192.168.159.130:9092
 ```
 
 ![avatar](20201130090159.png)
+
+```shell
+./kafka-consumer-perf-test.sh --broker-list 192.168.159.130:9092 --topic myTopic --fetch-size 1048576 --messages 100000 --threads 1
+```
+
+![avatar](20201130090159.png) 
+
+|测试场景|MQ消息数|每秒写入消息数|记录大小(单位:字节|
+|----|----|----|----|
+|主机130|10W|2000|1000|
+
+```shell
+./kafka-producer-perf-test.sh --topic myTopic --num-records 100000 --record-size 1000  --throughput 2000 --producer-props bootstrap.servers=192.168.159.130:9092
+```
+
+![avatar](20201130090159.png)
+
+```shell
+./kafka-consumer-perf-test.sh --broker-list 192.168.159.130:9092 --topic myTopic --fetch-size 1048576 --messages 100000 --threads 1
+```
+
+![avatar](20201130090159.png) 
+
+#### 测试结果对比
+
+|测试项|设置消息总数（单位:w）|设置单个消息大小（单位:字节）|设置每秒发送消息数	|实际写入消息数/秒|95%的消息延迟(单位:ms)|
+|----|----|----|----|----|----|
+|写入|10|1000|2000|
