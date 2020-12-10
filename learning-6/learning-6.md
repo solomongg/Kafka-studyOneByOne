@@ -87,3 +87,4 @@
   增加`num.replica.fetchers`提升`-Follower`同步`TPS`，避免`Broker Full GC`等。
 - Consumer
   增加`fetch.min.bytes`
+  
