@@ -56,15 +56,16 @@ Kafka提供了两种分配策略：```Range```和```RoundRobin```。
   - 对消费者按字典进行排序
   - 然后遍历排序后的partition的方式分配给消费者
   举个例子，比如有两个消费者C0和C1，两个topic(t0,t1)，每个topic有三个分区p(0-2)，
-  那么采用Range策略，分配出的结果为： 
+  那么采用Range策略，分配出的结果为：
   `C0: [t0p0, t0p1, t1p0, t1p1]
-C1: [t0p2, t1p2]` 
+C1: [t0p2, t1p2]`
 
 - RoundRobin策略
   配RoundRobin策略和Range策略类型，唯一的区别就是Range策略分配partition时，是按照topic逐次划分的。而RoundRobin策略则是将所有topic的所有分区一起排序，然后遍历partition分给消费者。
   因此，采用RoundRobin策略，分配出的结果为：
 
   `
+  
   C0: [t0p0, t0p2, t1p1]
   C1: [t0p1, t1p0, t1p2]
   `
